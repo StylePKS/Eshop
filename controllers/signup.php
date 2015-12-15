@@ -13,6 +13,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     $captcha = htmlspecialchars($_POST['captcha']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
+    unset($_SESSION['error_captcha']);
 
     // Проверим e-mail на корректность
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
