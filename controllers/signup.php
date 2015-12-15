@@ -10,6 +10,7 @@ $errors = array();
 // Нам переданы из формы email & password
 if (isset($_POST['email'], $_POST['password'])) {
     // Отсечём пустые символы (пробелы и переносы строк)
+    $captcha = htmlspecialchars($_POST['captcha']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
