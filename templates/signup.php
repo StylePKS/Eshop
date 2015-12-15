@@ -8,6 +8,15 @@
         <label>Пароль: <input type="password" name="password"></label>
     </p>
     <p>
+        <label>Введите проверочный код:</label>
+    </p>
+    <p>
+        <img src="captcha/captcha.php" alt="Капча" />
+    </p>
+    <p>
+        <input type="text" name="captcha" />
+    </p>
+    <p>
         <button type="submit">Зарегистрироваться</button>
     </p>
 </form>

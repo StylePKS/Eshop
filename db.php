@@ -5,7 +5,7 @@ function get_connection()
     static $pdo = null;
 
     $database_user = 'root';
-    $database_password = 'root';
+    $database_password = '';
 
     if ($pdo === null) {
         $pdo = new PDO(
