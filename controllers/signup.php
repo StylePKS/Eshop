@@ -8,11 +8,12 @@
 $errors = array();
 
 // Нам переданы из формы email & password
-if (isset($_POST['email'], $_POST['password'])) {
+if (isset($_POST['email'], $_POST['password'], $_POST['nickname'])) {
     // Отсечём пустые символы (пробелы и переносы строк)
     $captcha = trim($_POST['captcha']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
+    $nickname = trim($_POST['nickname']);
 
     if (($captcha != $_SESSION['rand_code']) || ($captcha == "")) {         //Проверка совпадения введенной капчи со сгенерированной
         $errors[] = 'Введен неверный проверочный код.';                     //При несовпадении выводим ошибку
@@ -27,6 +28,10 @@ if (isset($_POST['email'], $_POST['password'])) {
     // Проверим длину пароля
     if (mb_strlen($password) < 6) {
         $errors[] = 'Пароль не может быть менее 6 символов.';
+    }
+
+    if (mb_strlen($nickname) < 4) {                             //Проверяем длину никнейма
+        $errors[] = 'Никней не может быть короче 4 символов';
     }
 
     // Найдём пользователя с таким же email в БД
@@ -45,12 +50,13 @@ if (isset($_POST['email'], $_POST['password'])) {
         // Мы храним только хэш пароля
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = 'INSERT INTO `users` (`email`, `password_hash`) VALUES (:email, :password_hash)';
+        $sql = 'INSERT INTO `users` (`email`, `password_hash`, `nickname`) VALUES (:email, :password_hash, :nickname)';
 
         // Выполним SQL-запрос вставки записи, используя именованные параметры
         $affected_rows = db_query($sql, array(
             ':email' => $email,
-            ':password_hash' => $password_hash
+            ':password_hash' => $password_hash,
+            ':nickname' => $nickname
         ));
 
         // Вызов db_query должен вернуть 1, потому что мы вставляем 1 запись

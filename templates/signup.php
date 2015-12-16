@@ -3,10 +3,10 @@
 <form method="POST" action="./index.php?action=signup">
     <?php require __DIR__ .'/_form-errors.php';?>
     <p>
-        <label>E-mail: <input type="text" name="email"></label>
+        <label>Nickname: <input type="text" name="nickname"></label>
     </p>
     <p>
-        <label>Nickname: <input type="text" name="nickname"></label>
+        <label>E-mail: <input type="text" name="email"></label>
     </p>
     <p>
         <label>Пароль: <input type="password" name="password"></label>
