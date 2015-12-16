@@ -10,10 +10,13 @@ $errors = array();
 // Нам переданы из формы email & password
 if (isset($_POST['email'], $_POST['password'])) {
     // Отсечём пустые символы (пробелы и переносы строк)
-    $captcha = htmlspecialchars($_POST['captcha']);
+    $captcha = trim($_POST['captcha']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
-    unset($_SESSION['error_captcha']);
+
+    if (($captcha != $_SESSION['rand_code']) || ($captcha == "")) {         //Проверка совпадения введенной капчи со сгенерированной
+        $errors[] = 'Введен неверный проверочный код.';                     //При несовпадении выводим ошибку
+    }
 
     // Проверим e-mail на корректность
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
