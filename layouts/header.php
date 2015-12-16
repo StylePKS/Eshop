@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="style.css" rel="stylesheet">
     <title><?= $page_title ?></title>
     <meta charset="UTF-8">
 </head>
@@ -8,7 +9,7 @@
 
 <?php $cart = get_cart_data() ?>
 <div>
-    <h4><a href="./?action=cart"><img src="./img/cart.png"></a></h4>
+    <h4><a href="./?action=cart"><img width="40" title="Корзина" src="./img/cart.png"></a></h4>
     <?= $cart['quantity'] ?> товаров на сумму <?= $cart['cost'] ?>р.
 </div>
 
