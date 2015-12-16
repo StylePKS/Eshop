@@ -6,6 +6,9 @@
         <label>E-mail: <input type="text" name="email"></label>
     </p>
     <p>
+        <label>Nickname: <input type="text" name="nickname"></label>
+    </p>
+    <p>
         <label>Пароль: <input type="password" name="password"></label>
     </p>
     <p>
