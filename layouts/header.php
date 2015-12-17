@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="style.css" rel="stylesheet">
     <title><?= $page_title ?></title>
     <meta charset="UTF-8">
 </head>
