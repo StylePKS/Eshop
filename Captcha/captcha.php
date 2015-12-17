@@ -1,9 +1,11 @@
 <?php
 	session_start();
-	//Генерируем 5 символов капчи
+	$chars = 'abdefhknrstyz23456789'; // Задаем символы, используемые в капче. Разделитель использовать не надо.
+		  $length = rand(4, 7); // Задаем длину капчи, в нашем случае - от 4 до 7
+		  $numChars = strlen($chars); // Узнаем, сколько у нас задано символов
 	$string = "";
-	for ($i = 0; $i < 5; $i++)
-		$string .= chr(rand(97, 122));
+	for ($i = 0; $i < $length; $i++)
+		$string .= substr($chars, rand(1, $numChars) - 1, 1);
 	
 	$_SESSION['rand_code'] = $string;	//Записываем сроку в сессию
 
