@@ -2,6 +2,7 @@
 В файлы templates/signup.php и templates/login.php добавлены поля для ввода капчи.
 В файлы controllers/signup.php и controllers/login.php добавлено отсечение пустых символов и проверка капчи.
 Добавлен шрифт капчи в Captcha\fonts\
+При регистрации добавлен повторный ввод пароля.
 
 Мелкие внешние изменения.
 

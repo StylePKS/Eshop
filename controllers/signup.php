@@ -30,7 +30,7 @@ if (isset($_POST['email'], $_POST['password'], $_POST['password2'])) {
         $errors[] = 'Пароль не может быть менее 6 символов.';
     }
 
-    if( $_POST['password'] !== $_POST['password2']) { 
+    if( $_POST['password'] !== $_POST['password2']) {       //Проверяем совпадение паролей
     $errors[] = 'Пароли не совпадают.'; 
     }
 
