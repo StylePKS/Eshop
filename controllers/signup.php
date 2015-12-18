@@ -8,11 +8,12 @@
 $errors = array();
 
 // Нам переданы из формы email & password
-if (isset($_POST['email'], $_POST['password'])) {
+if (isset($_POST['email'], $_POST['password'], $_POST['password2'])) {
     // Отсечём пустые символы (пробелы и переносы строк)
     $captcha = trim($_POST['captcha']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
+    $password2 = trim($_POST['password2']);
 
     if (($captcha != $_SESSION['rand_code']) || ($captcha == "")) {         //Проверка совпадения введенной капчи со сгенерированной
         $errors[] = 'Введен неверный проверочный код.';                     //При несовпадении выводим ошибку
@@ -27,6 +28,10 @@ if (isset($_POST['email'], $_POST['password'])) {
     // Проверим длину пароля
     if (mb_strlen($password) < 6) {
         $errors[] = 'Пароль не может быть менее 6 символов.';
+    }
+
+    if( $_POST['password'] !== $_POST['password2']) { 
+    $errors[] = 'Пароли не совпадают.'; 
     }
 
     // Найдём пользователя с таким же email в БД

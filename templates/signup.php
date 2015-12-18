@@ -9,6 +9,9 @@
         <label>Пароль: <input type="password" name="password"></label>
     </p>
     <p>
+        <label>Повторите пароль: <input type="password" name="password2"></label>
+    </p>
+    <p>
         <label>Введите проверочный код:</label>                 
     </p>
     <p>

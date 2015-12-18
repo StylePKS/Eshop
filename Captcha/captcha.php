@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	$chars = 'abdefhknrstyz23456789'; // Задаем символы, используемые в капче. 
-		  $length = rand(4, 7); // Задаем длину капчи от 4 до 7
+		  $length = rand(4, 6); // Задаем длину капчи от 4 до 6
 		  $numChars = strlen($chars); // Узнаем, сколько у нас задано символов
 	$string = "";
 	for ($i = 0; $i < $length; $i++)
