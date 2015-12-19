@@ -32,8 +32,8 @@ if (isset($_POST['email'], $_POST['password'], $_POST['password2'])) {
     }
 
     // Проверим длину имени
-    if (mb_strlen($name) < 4) {
-        $errors[] = 'Имя не может быть короче 4 символов.';
+    if (mb_strlen($name) < 2) {
+        $errors[] = 'Имя не может быть короче 2 символов.';
     }
 
     if( $_POST['password'] !== $_POST['password2']) {       //Проверяем совпадение паролей
