@@ -73,9 +73,8 @@ if (isset($_POST['email'], $_POST['password'], $_POST['password2'])) {
        
     // Ошибок не произошло - отправляем пользователя на главную страницу
     if (empty($errors)) {
-        $pdo = get_connection();
-        $_SESSION['user_id'] = (int) $pdo->lastInsertId();
-        //var_dump($_SESSION);
+        $pdo = get_connection();    //Получаем соединение с MySQL
+        $_SESSION['user_id'] = (int) $pdo->lastInsertId();      //Задаем id пользователю, который зарегистрировался
         browser_redirect('homepage');
     }
 }
