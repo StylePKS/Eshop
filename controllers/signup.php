@@ -70,9 +70,12 @@ if (isset($_POST['email'], $_POST['password'], $_POST['password2'])) {
             $errors[] = 'Не удалось завершить регистрацию.';
         }
     }
-
+       
     // Ошибок не произошло - отправляем пользователя на главную страницу
     if (empty($errors)) {
+        $pdo = get_connection();
+        $_SESSION['user_id'] = (int) $pdo->lastInsertId();
+        //var_dump($_SESSION);
         browser_redirect('homepage');
     }
 }
