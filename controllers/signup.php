@@ -11,6 +11,7 @@ $errors = array();
 if (isset($_POST['email'], $_POST['password'], $_POST['password2'])) {
     // Отсечём пустые символы (пробелы и переносы строк)
     $captcha = trim($_POST['captcha']);
+    $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
     $password2 = trim($_POST['password2']);
@@ -28,6 +29,11 @@ if (isset($_POST['email'], $_POST['password'], $_POST['password2'])) {
     // Проверим длину пароля
     if (mb_strlen($password) < 6) {
         $errors[] = 'Пароль не может быть менее 6 символов.';
+    }
+
+    // Проверим длину имени
+    if (mb_strlen($name) < 4) {
+        $errors[] = 'Имя не может быть короче 4 символов.';
     }
 
     if( $_POST['password'] !== $_POST['password2']) {       //Проверяем совпадение паролей
@@ -50,12 +56,13 @@ if (isset($_POST['email'], $_POST['password'], $_POST['password2'])) {
         // Мы храним только хэш пароля
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = 'INSERT INTO `users` (`email`, `password_hash`) VALUES (:email, :password_hash)';
+        $sql = 'INSERT INTO `users` (`email`, `password_hash`, `name`) VALUES (:email, :password_hash, :name)';
 
         // Выполним SQL-запрос вставки записи, используя именованные параметры
         $affected_rows = db_query($sql, array(
             ':email' => $email,
-            ':password_hash' => $password_hash
+            ':password_hash' => $password_hash,
+            ':name' => $name
         ));
 
         // Вызов db_query должен вернуть 1, потому что мы вставляем 1 запись
